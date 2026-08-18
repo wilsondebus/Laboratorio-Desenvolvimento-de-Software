@@ -42,10 +42,12 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="bnt5" pref="54" max="32767" attributes="0"/>
+                                              <Component id="bnt2" max="32767" attributes="0"/>
+                                          </Group>
                                           <Component id="bnt8" min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="bnt5" max="32767" attributes="0"/>
-                                          <Component id="bnt2" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -95,10 +97,12 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="txtResultado" min="-2" pref="77" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bntCE" linkSize="1" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="bntC" linkSize="1" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="bntDEL" linkSize="1" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="bntCE" linkSize="1" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="bntC" linkSize="1" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="bntDivisao" linkSize="1" min="-2" pref="54" max="-2" attributes="0"/>
@@ -154,11 +158,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="CE"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntCEActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bntC">
       <Properties>
         <Property name="text" type="java.lang.String" value="C"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bntDEL">
       <Properties>
@@ -172,6 +182,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="/"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntDivisaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bnt7">
       <Properties>
@@ -193,6 +206,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="X"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntMultiplicacaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton8">
       <Properties>
@@ -222,6 +238,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntSubtracaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bnt6">
       <Properties>
@@ -285,6 +304,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value=","/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntVirgulaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

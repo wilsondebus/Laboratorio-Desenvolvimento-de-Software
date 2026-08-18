@@ -59,8 +59,18 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
         txtResultado.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         bntCE.setText("CE");
+        bntCE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntCEActionPerformed(evt);
+            }
+        });
 
         bntC.setText("C");
+        bntC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntCActionPerformed(evt);
+            }
+        });
 
         bntDEL.setText("DEL");
         bntDEL.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +80,11 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
         });
 
         bntDivisao.setText("/");
+        bntDivisao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntDivisaoActionPerformed(evt);
+            }
+        });
 
         bnt7.setText("7");
         bnt7.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +101,11 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
         });
 
         bntMultiplicacao.setText("X");
+        bntMultiplicacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntMultiplicacaoActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("9");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +129,11 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
         });
 
         bntSubtracao.setText("-");
+        bntSubtracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntSubtracaoActionPerformed(evt);
+            }
+        });
 
         bnt6.setText("6");
         bnt6.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +185,11 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
         });
 
         bntVirgula.setText(",");
+        bntVirgula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntVirgulaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,10 +212,11 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(bnt8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(bnt5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(bnt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(bnt5, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                                                .addComponent(bnt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(bnt8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(bntDivisao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,10 +251,11 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bntCE, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntC, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntDEL, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bntDEL, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bntCE, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bntC, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12)
                 .addComponent(bntDivisao, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -265,6 +297,10 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
 
     private void bntDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntDELActionPerformed
         // TODO add your handling code here:
+        String texto = txtResultado.getText();
+        if(!texto.isEmpty()){
+            txtResultado.setText(texto.substring(0, texto.length()-1)); 
+        }
     }//GEN-LAST:event_bntDELActionPerformed
 
     private void bnt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt4ActionPerformed
@@ -283,10 +319,21 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
         n2 = Double.parseDouble(txtResultado.getText());
         if(operacao == "soma"){
             resultado = n1 + n2;
-            lblValor.setText(n1 +"+"+ n2+ "=");
+            lblValor.setText(n1 +" + "+ n2+ " = ");
             txtResultado.setText(String.valueOf(resultado)); 
-        }
-            
+        } else if (operacao == "multiplicacao"){
+            resultado = n1 * n2; 
+            lblValor.setText(n1 +" x "+n2+" = "); 
+            txtResultado.setText(String.valueOf(resultado));
+        } else if (operacao == "divisao"){
+            resultado = n1 / n2;
+            lblValor.setText(n1 + " / "+n2+ " = ");
+            txtResultado.setText(String.valueOf(resultado)); 
+        } else if (operacao == "subtracao"){
+            resultado = n1 - n2; 
+            lblValor.setText(n1 + " - "+n2+ " = ");
+            txtResultado.setText(String.valueOf(resultado)); 
+        }      
     }//GEN-LAST:event_bntIgualActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
@@ -331,12 +378,57 @@ public class InterfaceCalculadora extends javax.swing.JFrame {
 
     private void bntAdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAdicaoActionPerformed
         // TODO add your handling code here:
-        lblValor.setText(txtResultado.getText()+"+");
+        lblValor.setText(txtResultado.getText()+" + ");
         n1 = Double.parseDouble(txtResultado.getText()); 
         operacao = "soma"; 
         txtResultado.setText(""); 
         
     }//GEN-LAST:event_bntAdicaoActionPerformed
+
+    private void bntCEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCEActionPerformed
+        // TODO add your handling code here:
+        txtResultado.setText(""); 
+    }//GEN-LAST:event_bntCEActionPerformed
+
+    private void bntCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCActionPerformed
+        // TODO add your handling code here:
+        txtResultado.setText("");
+        lblValor.setText("");
+        n1 = 0;
+        n2 = 0; 
+        operacao = ""; 
+    }//GEN-LAST:event_bntCActionPerformed
+
+    private void bntMultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntMultiplicacaoActionPerformed
+        // TODO add your handling code here:
+        lblValor.setText(txtResultado.getText()+" * "); 
+        n1 = Double.parseDouble(txtResultado.getText()); 
+        operacao = "multiplicacao";
+        txtResultado.setText(""); 
+    }//GEN-LAST:event_bntMultiplicacaoActionPerformed
+
+    private void bntSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSubtracaoActionPerformed
+        // TODO add your handling code here:
+        lblValor.setText(txtResultado.getText()+" - ");
+        n1 = Double.parseDouble(txtResultado.getText());
+        operacao = "subtracao";
+        txtResultado.setText(""); 
+    }//GEN-LAST:event_bntSubtracaoActionPerformed
+
+    private void bntDivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntDivisaoActionPerformed
+        // TODO add your handling code here:
+        lblValor.setText(txtResultado.getText()+" / ");
+        n1 = Double.parseDouble(txtResultado.getText());
+        operacao = "divisao";
+        txtResultado.setText(""); 
+    }//GEN-LAST:event_bntDivisaoActionPerformed
+
+    private void bntVirgulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntVirgulaActionPerformed
+        // TODO add your handling code here:
+        if(!txtResultado.getText().contains(".")){
+            txtResultado.setText(txtResultado.getText()+ "."); 
+        }
+    }//GEN-LAST:event_bntVirgulaActionPerformed
 
     /**
      * @param args the command line arguments
