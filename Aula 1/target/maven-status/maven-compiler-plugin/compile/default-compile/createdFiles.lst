@@ -1,7 +1,8 @@
-Polimorfismo\FormaGeometrica.class
-Polimorfismo\Principal.class
-com\mycompany\projetoconta\ProjetoConta.class
 Exercicio3\Principal.class
-com\mycompany\projetoconta\ContaCorrente.class
+Exercicio4\MetodoPagamento.class
+Exercicio4\PayPalPagamento.class
+Exercicio4\CartaoCredito.class
+Exercicio1\ContaCorrente.class
+Exercicio1\Principal.class
 Exercicio3\Casa.class
-Polimorfismo\Triangulo.class
+Exercicio4\PixPagamento.class
