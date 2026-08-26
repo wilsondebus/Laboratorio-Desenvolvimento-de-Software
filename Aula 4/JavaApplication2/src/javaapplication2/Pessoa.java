@@ -23,4 +23,8 @@ public class Pessoa {
     public String toString() {
         return "Pessoa: " + " nome: " + nome + ", sexo: " + sexo + ", idioma: " + idioma;
     }   
+    
+    public Object[] obterDados(){
+        return new Object[] {nome, sexo, idioma};   
+    }
 }

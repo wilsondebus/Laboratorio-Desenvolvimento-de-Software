@@ -4,7 +4,10 @@
  */
 package javaapplication2;
 
+import java.util.HashSet;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +22,25 @@ public class RadioButton extends javax.swing.JFrame {
      */
     public char sexo;
     public boolean astronomia, tecnologia, esportes; 
-    public RadioButton() {
+    private Arquivo arquivo; 
+    private List<Pessoa> listaPessoas;
+    public RadioButton(){
         initComponents();
+        arquivo = new Arquivo("Pessoas"); 
+        listaPessoas = arquivo.leArquivo(); 
+        carregarTabela(); 
     }
-
+    
+    private void carregarTabela(){
+        DefaultTableModel tabela = (DefaultTableModel) tbl_Pessoas.getModel();
+        
+        tabela.setRowCount(0);
+        
+        for(Pessoa p : listaPessoas){
+            tabela.addRow(p.obterDados()); 
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,20 +51,35 @@ public class RadioButton extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGrp_Sexo = new javax.swing.ButtonGroup();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         rdo_Masculino = new javax.swing.JRadioButton();
         rdo_Feminino = new javax.swing.JRadioButton();
         btnSalvar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaPessoas = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         chk_Tecnologia = new javax.swing.JCheckBox();
         chk_Astronomia = new javax.swing.JCheckBox();
         chk_Esportes = new javax.swing.JCheckBox();
         cmb_Idioma = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbl_Pessoas = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,10 +106,6 @@ public class RadioButton extends javax.swing.JFrame {
             }
         });
 
-        txaPessoas.setColumns(20);
-        txaPessoas.setRows(5);
-        jScrollPane1.setViewportView(txaPessoas);
-
         jLabel3.setText("Interesses:");
 
         chk_Tecnologia.setText("Tecnologia");
@@ -89,41 +118,56 @@ public class RadioButton extends javax.swing.JFrame {
 
         jLabel4.setText("Idioma:");
 
+        tbl_Pessoas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "Sexo", "Idioma"
+            }
+        ));
+        jScrollPane3.setViewportView(tbl_Pessoas);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmb_Idioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chk_Tecnologia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chk_Astronomia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chk_Esportes))))
+                    .addComponent(btnSalvar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4))
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rdo_Masculino)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cmb_Idioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(chk_Tecnologia)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(chk_Astronomia)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(chk_Esportes))))
-                        .addComponent(btnSalvar)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rdo_Masculino)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rdo_Feminino))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                            .addComponent(rdo_Feminino))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,11 +192,11 @@ public class RadioButton extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(cmb_Idioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(btnSalvar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -163,24 +207,49 @@ public class RadioButton extends javax.swing.JFrame {
         tecnologia = chk_Tecnologia.isSelected();
         astronomia = chk_Astronomia.isSelected();
         esportes = chk_Esportes.isSelected(); 
+        
+        String idioma = cmb_Idioma.getSelectedItem()+"";
+        
         JOptionPane.showMessageDialog(null, "Tecnologia: "+tecnologia+
                 "\nAstronomia: "+astronomia+
                 "\nEsportes: "+esportes, "Alerta", JOptionPane.INFORMATION_MESSAGE); 
         
         if(rdo_Masculino.isSelected()){
             sexo = 'M'; 
-            JOptionPane.showMessageDialog(null, "Sexo masculino selecionado", "Alerta", JOptionPane.OK_OPTION);
-            Pessoa p = new Pessoa(txtNome.getText(), sexo, String.valueOf(cmb_Idioma.getSelectedItem()));
-            txaPessoas.append(p+"");
+            //JOptionPane.showMessageDialog(null, "Sexo masculino selecionado", "Alerta", JOptionPane.OK_OPTION);
+            //Pessoa p = new Pessoa(txtNome.getText(), sexo, String.valueOf(cmb_Idioma.getSelectedItem()));
+            //txaPessoas.append(p+"");
         } else if(rdo_Feminino.isSelected()){
             sexo = 'F'; 
-            JOptionPane.showMessageDialog(null, "Sexo masculino selecionado", "Alerta", JOptionPane.OK_OPTION);
-            Pessoa p = new Pessoa(txtNome.getText(), sexo, String.valueOf(cmb_Idioma.getSelectedItem()));
-            txaPessoas.append(p+"");
+            //JOptionPane.showMessageDialog(null, "Sexo masculino selecionado", "Alerta", JOptionPane.OK_OPTION);
+            //Pessoa p = new Pessoa(txtNome.getText(), sexo, String.valueOf(cmb_Idioma.getSelectedItem()));
+            //txaPessoas.append(p+"");
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um sexo", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-         
+        
+        Pessoa p = new Pessoa (txtNome.getText(), sexo, idioma); 
+        
+        DefaultTableModel tabela = (DefaultTableModel) tbl_Pessoas.getModel(); 
+        tabela.addRow(p.obterDados()); 
+        
+        listaPessoas.add(p); 
+        
+        arquivo.gravaArquivo();
+        
+        System.out.println("Pessoa adicionada");
+        for(Pessoa pessoa : listaPessoas){
+            System.out.println(pessoa);
+        }
+        
+        //deixando os campos limpos 
+        txtNome.setText(" ");
+        btnGrp_Sexo.clearSelection();
+        chk_Tecnologia.setSelected(false);
+        chk_Astronomia.setSelected(false);
+        chk_Esportes.setSelected(false);
+        cmb_Idioma.setSelectedIndex(0); 
+       
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -223,10 +292,12 @@ public class RadioButton extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton rdo_Feminino;
     private javax.swing.JRadioButton rdo_Masculino;
-    private javax.swing.JTextArea txaPessoas;
+    private javax.swing.JTable tbl_Pessoas;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
