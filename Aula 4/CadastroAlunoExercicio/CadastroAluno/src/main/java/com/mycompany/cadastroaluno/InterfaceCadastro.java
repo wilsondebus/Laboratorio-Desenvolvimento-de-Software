@@ -4,6 +4,13 @@
  */
 package com.mycompany.cadastroaluno;
 
+
+import java.util.HashSet;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableColumnModel; 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author wilsi
@@ -15,8 +22,25 @@ public class InterfaceCadastro extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceCadastro
      */
+    public String nome, dataNascimento, sexo, matricula, curso, cpf, estado, cidade, bairro, rua, complemento;
+    public float numero, telefone; 
+    private Arquivo arquivo;
+    private List<Aluno> listaAlunos;
     public InterfaceCadastro() {
         initComponents();
+        arquivo = new Arquivo("Alunos");
+        listaAlunos = arquivo.leArquivo();
+        carregarTabela(); 
+    }
+    
+    private void carregarTabela(){
+        DefaultTableModel tabela = (DefaultTableModel) tbl_Alunos.getModel(); 
+        
+        tabela.setRowCount(0); 
+        
+        for(Aluno aluno : listaAlunos){
+            tabela.addRow(aluno.obterDados()); 
+        }
     }
 
     /**
@@ -43,8 +67,6 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         txtNome = new javax.swing.JTextField();
         txtDataNasc = new javax.swing.JTextField();
         txtMatricula = new javax.swing.JTextField();
@@ -61,6 +83,8 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         txtComplemento = new javax.swing.JTextField();
         lblInfos = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_Alunos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,10 +116,6 @@ public class InterfaceCadastro extends javax.swing.JFrame {
 
         jLabel13.setText("Telefone:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         txtNome.addActionListener(this::txtNomeActionPerformed);
 
         txtDataNasc.addActionListener(this::txtDataNascActionPerformed);
@@ -110,6 +130,16 @@ public class InterfaceCadastro extends javax.swing.JFrame {
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(this::btnSalvarActionPerformed);
+
+        tbl_Alunos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Data Nascimento", "Sexo", "Matricula", "Curso", "CPF", "Estado", "Cidade", "Bairro", "Rua", "Numero", "Complemento", "Telefone"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl_Alunos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,33 +166,26 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rbtnSexoF)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel4))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel10))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                .addComponent(rbtnSexoF))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(83, 83, 83)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(7, 7, 7)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtComplemento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                .addComponent(txtDataNasc, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                .addComponent(txtBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                .addComponent(txtRua)))
-                        .addGap(94, 94, 94))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(94, 386, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
@@ -187,10 +210,9 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInfos)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblInfos)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,9 +269,9 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                 .addComponent(btnSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblInfos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -265,31 +287,39 @@ public class InterfaceCadastro extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        String nome = txtNome.getText(); 
-        String dataNascimento = txtDataNasc.getText();
-        
-        String sexo = ""; 
-        
-        if (rbtnSexoM.isSelected()){
-            sexo = "Masculino"; 
-        } else if (rbtnSexoF.isSelected()){
-            sexo = "Feminino"; 
+        //PARA EXIBIR NA CAIXA DE TEXTO
+//        String nome = txtNome.getText(); 
+//        String dataNascimento = txtDataNasc.getText();
+//        
+//        String sexo = ""; 
+//        
+//        if (rbtnSexoM.isSelected()){
+//            sexo = "Masculino"; 
+//        } else if (rbtnSexoF.isSelected()){
+//            sexo = "Feminino"; 
+//        }
+//        
+//        String matricula = txtMatricula.getText();
+//        String curso = txtCurso.getText(); 
+//        String cpf = txtCpf.getText();
+//        String estado = txtEstado.getText();
+//        String cidade = txtCidade.getText();
+//        String bairro = txtBairro.getText(); 
+//        String rua = txtRua.getText();
+//        float numero = Float.parseFloat(txtNumero.getText());
+//        String complemento = txtComplemento.getText(); 
+//        float telefone = Float.parseFloat(txtTelefone.getText()); 
+//        
+//        Aluno aluno = new Aluno(nome, dataNascimento, sexo,matricula, curso, cpf, estado, cidade, bairro, rua, numero, complemento, telefone); 
+
+        //PARA EXIBIR NA TABELA E A TABELA CARREGAR OS QUE JA ESTÃO NO ARQUIVO
+        if(rbtnSexoM.isSelected()){
+            sexo = 'M'; 
+        } else if(rbtnSexoF.isSelected()){
+            sexo = 'F'; 
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um sexo", "Erro", JOptionPane.ERROR_MESSAGE); 
         }
-        
-        int matricula = Integer.parseInt(txtMatricula.getText());
-        String curso = txtCurso.getText(); 
-        String cpf = txtCpf.getText();
-        String estado = txtEstado.getText();
-        String cidade = txtCidade.getText();
-        String bairro = txtBairro.getText(); 
-        String rua = txtRua.getText();
-        int numero = Integer.parseInt(txtNumero.getText());
-        String complemento = txtComplemento.getText(); 
-        int telefone = Integer.parseInt(txtTelefone.getText()); 
-        
-        Aluno aluno = new Aluno(nome, dataNascimento, sexo,matricula, curso, cpf, estado, cidade, bairro, rua, numero, complemento, telefone); 
-           
-        jTextArea1.setText(aluno.toString()); 
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -334,12 +364,12 @@ public class InterfaceCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblInfos;
     private javax.swing.JLabel lblTextoInicial;
     private javax.swing.JRadioButton rbtnSexoF;
     private javax.swing.JRadioButton rbtnSexoM;
+    private javax.swing.JTable tbl_Alunos;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;

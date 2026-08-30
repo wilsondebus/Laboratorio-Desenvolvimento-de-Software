@@ -13,18 +13,18 @@ public class Aluno {
     public String nome;
     public String dataNascimento;
     public String sexo;
-    public int matricula;
+    public String matricula;
     public String curso;
     public String cpf;
     public String estado;
     public String cidade;
     public String bairro;
     public String rua;
-    public int numero;
+    public float numero;
     public String complemento;
-    public int telefone; 
+    public float telefone; 
 
-    public Aluno(String nome, String dataNascimento, String sexo, int matricula, String curso, String cpf, String estado, String cidade, String bairro, String rua, int numero, String complemento, int telefone) {
+    public Aluno(String nome, String dataNascimento, String sexo, String matricula, String curso, String cpf, String estado, String cidade, String bairro, String rua, float numero, String complemento, float telefone) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
@@ -55,5 +55,9 @@ public class Aluno {
            "\nRua: " + rua +
            "\nNúmero: " + numero +
            "\nComplemento: " + complemento;
-}  
+    }  
+    
+    public Object[] obterDados(){
+        return new Object[] {nome, dataNascimento, sexo, matricula, curso, cpf, estado, cidade, bairro, rua, numero, complemento, telefone};
+    }
 }
