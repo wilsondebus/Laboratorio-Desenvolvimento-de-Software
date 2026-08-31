@@ -314,12 +314,55 @@ public class InterfaceCadastro extends javax.swing.JFrame {
 
         //PARA EXIBIR NA TABELA E A TABELA CARREGAR OS QUE JA ESTÃO NO ARQUIVO
         if(rbtnSexoM.isSelected()){
-            sexo = 'M'; 
+            sexo = "M"; 
         } else if(rbtnSexoF.isSelected()){
-            sexo = 'F'; 
+            sexo = "F";
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um sexo", "Erro", JOptionPane.ERROR_MESSAGE); 
+            return;
         }
+        
+        nome = txtNome.getText(); 
+        dataNascimento = txtDataNasc.getText();
+        matricula = txtMatricula.getText();
+        curso = txtCurso.getText(); 
+        cpf = txtCpf.getText();
+        estado = txtEstado.getText();
+        cidade = txtCidade.getText();
+        bairro = txtBairro.getText(); 
+        rua = txtRua.getText();
+        numero = Float.parseFloat(txtNumero.getText());
+        complemento = txtComplemento.getText(); 
+        telefone = Float.parseFloat(txtTelefone.getText());
+        
+        Aluno aluno = new Aluno(nome, dataNascimento, sexo, matricula, curso, cpf, estado, cidade, bairro, rua, numero, complemento, telefone);
+        
+        DefaultTableModel tabela = (DefaultTableModel) tbl_Alunos.getModel();
+        tabela.addRow(aluno.obterDados()); 
+        
+        listaAlunos.add(aluno);
+        
+        arquivo.gravaArquivo();
+        
+        System.out.println("Aluno adicionado");
+        for(Aluno a : listaAlunos){
+            System.out.println(a);
+        }
+        
+        //Deixando os campos em branco 
+        txtNome.setText(" "); 
+        txtDataNasc.setText(" ");
+        txtMatricula.setText(" ");
+        txtBairro.setText(" ");
+        txtCidade.setText(" ");
+        txtComplemento.setText(" ");
+        txtCpf.setText(" ");
+        txtCurso.setText(" "); 
+        txtEstado.setText(" ");
+        txtNumero.setText(" ");
+        txtRua.setText(" ");
+        txtTelefone.setText(" ");
+        buttonGroup1.clearSelection();
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
