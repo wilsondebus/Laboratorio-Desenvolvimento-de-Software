@@ -24,6 +24,8 @@ public class RadioButton extends javax.swing.JFrame {
     public boolean astronomia, tecnologia, esportes; 
     private Arquivo arquivo; 
     private List<Pessoa> listaPessoas;
+    private int linhaEdicao = -1; 
+    
     public RadioButton(){
         initComponents();
         arquivo = new Arquivo("Pessoas"); 
@@ -67,6 +69,8 @@ public class RadioButton extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_Pessoas = new javax.swing.JTable();
+        btnExcluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,6 +135,20 @@ public class RadioButton extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbl_Pessoas);
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,6 +156,23 @@ public class RadioButton extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rdo_Masculino)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(rdo_Feminino))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSalvar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -150,23 +185,11 @@ public class RadioButton extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(chk_Astronomia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chk_Esportes))))
-                    .addComponent(btnSalvar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rdo_Masculino)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(rdo_Feminino))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(118, Short.MAX_VALUE))
+                                .addComponent(chk_Esportes)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -193,9 +216,12 @@ public class RadioButton extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cmb_Idioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(btnSalvar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -233,9 +259,21 @@ public class RadioButton extends javax.swing.JFrame {
         DefaultTableModel tabela = (DefaultTableModel) tbl_Pessoas.getModel(); 
         tabela.addRow(p.obterDados()); 
         
-        listaPessoas.add(p); 
+        if(linhaEdicao == -1){
+            listaPessoas.add(p); 
+        } else {
+            listaPessoas.set(linhaEdicao, p);
+            linhaEdicao = -1; 
+        }
+        
+        //listaPessoas.add(p); 
         
         arquivo.gravaArquivo();
+        carregarTabela(); 
+        JOptionPane.showMessageDialog(
+                null,
+                "Dados salvos com sucesso!"
+        );
         
         System.out.println("Pessoa adicionada");
         for(Pessoa pessoa : listaPessoas){
@@ -255,6 +293,62 @@ public class RadioButton extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        int linha = tbl_Pessoas.getSelectedRow(); 
+        if (linha == -1){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Selecione uma pessoa na tabela.",
+                    "Atenção",
+                    JOptionPane.WARNING_MESSAGE
+            ); 
+            return; 
+        }
+        int resposta = JOptionPane.showConfirmDialog(
+                null,
+                "Deseja realmente excluir esta pessoa?",
+                "Confirmação",
+                JOptionPane.YES_NO_OPTION
+        ); 
+        
+        if (resposta == JOptionPane.YES_NO_OPTION){
+            listaPessoas.remove(linha); 
+           
+            arquivo.gravaArquivo();
+           
+            DefaultTableModel tabela = (DefaultTableModel) tbl_Pessoas.getModel(); 
+           
+            tabela.removeRow(linha); 
+           
+            System.out.println("Pessoa excluída!");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        int linha = tbl_Pessoas.getSelectedRow(); 
+        
+        if(linha == -1){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Selecione uma pessoa para editar"
+            );
+            return;
+        }
+        linhaEdicao = linha;
+        Pessoa p = listaPessoas.get(linha); 
+        txtNome.setText(p.nome); 
+        
+        if(p.sexo == 'M'){
+            rdo_Masculino.setSelected(true);
+        } else {
+            rdo_Feminino.setSelected(true); 
+        }
+        
+        cmb_Idioma.setSelectedItem(p.idioma); 
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,6 +376,8 @@ public class RadioButton extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.ButtonGroup btnGrp_Sexo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox chk_Astronomia;

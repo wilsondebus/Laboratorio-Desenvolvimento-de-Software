@@ -85,6 +85,8 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_Alunos = new javax.swing.JTable();
+        bntExluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,6 +143,11 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tbl_Alunos);
 
+        bntExluir.setText("Excluir");
+        bntExluir.addActionListener(this::bntExluirActionPerformed);
+
+        btnEditar.setText("Editar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,16 +175,7 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbtnSexoF))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
-                                .addGap(18, 18, 18)
+                                .addGap(203, 203, 203)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +183,7 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(94, 386, Short.MAX_VALUE))
+                        .addGap(94, 456, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCurso, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
@@ -194,25 +192,35 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                             .addComponent(txtNumero)
                             .addComponent(txtTelefone))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addComponent(jScrollPane2)
             .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTextoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bntExluir, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblTextoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel12))))
+                        .addContainerGap(154, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(lblInfos)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
+                        .addComponent(lblInfos)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,16 +228,15 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblTextoInicial)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -266,7 +273,10 @@ public class InterfaceCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSalvar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(bntExluir)
+                    .addComponent(btnEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblInfos)
                 .addGap(18, 18, 18)
@@ -366,6 +376,39 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void bntExluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntExluirActionPerformed
+        // TODO add your handling code here:
+        int linha = tbl_Alunos.getSelectedRow(); 
+        if(linha == -1){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Selecione um aluno na tebela",
+                    "Atenção", 
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return; 
+        }
+        int resposta = JOptionPane.showConfirmDialog(
+                null,
+                "Deseja realmente excluir este Aluno?",
+                "Confirmação",
+                JOptionPane.YES_NO_OPTION
+        );
+        
+        if(resposta == JOptionPane.YES_NO_OPTION){
+            listaAlunos.remove(linha);
+            
+            arquivo.gravaArquivo();
+            
+            DefaultTableModel tabela = (DefaultTableModel) tbl_Alunos.getModel(); 
+            
+            tabela.removeRow(linha); 
+            
+            System.out.println("Aluno Excluido!");
+        }
+        
+    }//GEN-LAST:event_bntExluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,6 +435,8 @@ public class InterfaceCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntExluir;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;

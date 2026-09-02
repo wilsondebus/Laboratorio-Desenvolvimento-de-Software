@@ -56,18 +56,7 @@
                               <Component id="rbtnSexoF" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" pref="102" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtMatricula" min="-2" pref="71" max="-2" attributes="0"/>
                                   <Component id="txtDataNasc" min="-2" pref="71" max="-2" attributes="0"/>
@@ -78,7 +67,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="94" pref="386" max="32767" attributes="0"/>
+                      <EmptySpace min="94" pref="456" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -92,32 +81,43 @@
                   </Group>
               </Group>
           </Group>
-          <Group type="102" attributes="0">
+          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTextoInicial" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnSalvar" min="-2" pref="218" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="bntExluir" min="-2" pref="214" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnEditar" min="-2" pref="206" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" pref="102" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtNome" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="lblTextoInicial" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="154" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="btnSalvar" min="-2" pref="218" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblInfos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-              <Component id="lblInfos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -126,10 +126,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDataNasc" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtDataNasc" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -138,6 +135,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -183,7 +181,11 @@
                   <Component id="txtComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bntExluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="lblInfos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -353,5 +355,18 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="bntExluir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntExluirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEditar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
