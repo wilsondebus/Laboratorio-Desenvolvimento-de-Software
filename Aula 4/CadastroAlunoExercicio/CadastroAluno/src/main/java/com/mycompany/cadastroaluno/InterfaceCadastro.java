@@ -26,6 +26,8 @@ public class InterfaceCadastro extends javax.swing.JFrame {
     public float numero, telefone; 
     private Arquivo arquivo;
     private List<Aluno> listaAlunos;
+    private int linhaEdicao = -1;
+    
     public InterfaceCadastro() {
         initComponents();
         arquivo = new Arquivo("Alunos");
@@ -147,6 +149,7 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         bntExluir.addActionListener(this::bntExluirActionPerformed);
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -348,11 +351,17 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         Aluno aluno = new Aluno(nome, dataNascimento, sexo, matricula, curso, cpf, estado, cidade, bairro, rua, numero, complemento, telefone);
         
         DefaultTableModel tabela = (DefaultTableModel) tbl_Alunos.getModel();
-        tabela.addRow(aluno.obterDados()); 
+        //tabela.addRow(aluno.obterDados()); 
         
-        listaAlunos.add(aluno);
+        if(linhaEdicao == -1){
+            listaAlunos.add(aluno);
+        } else {
+            listaAlunos.set(linhaEdicao, aluno);
+            linhaEdicao = -1;
+        }
         
         arquivo.gravaArquivo();
+        carregarTabela(); 
         
         System.out.println("Aluno adicionado");
         for(Aluno a : listaAlunos){
@@ -408,6 +417,37 @@ public class InterfaceCadastro extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_bntExluirActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        int linha = tbl_Alunos.getSelectedRow(); 
+        
+        if (linha == -1){
+            JOptionPane.showMessageDialog(null, "Selecione uma pessoa para editar");
+            return; 
+        } 
+        
+        linhaEdicao = linha;
+        Aluno a = listaAlunos.get(linha);
+        txtNome.setText(a.nome);
+        txtDataNasc.setText(a.dataNascimento);
+        txtBairro.setText(a.bairro);
+        txtCidade.setText(a.cidade);
+        txtComplemento.setText(a.complemento);
+        txtCpf.setText(a.cpf);
+        txtCurso.setText(a.curso);
+        txtEstado.setText(a.estado);
+        txtMatricula.setText(a.matricula);
+        txtNumero.setText(String.valueOf(a.numero));
+        txtRua.setText(a.rua);
+        txtTelefone.setText(String.valueOf(a.telefone));        
+        
+        if(a.sexo.equals("M")){
+            rbtnSexoM.setSelected(true);
+        } else {
+            rbtnSexoF.setSelected(true);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
