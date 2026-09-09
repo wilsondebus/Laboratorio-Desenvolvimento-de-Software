@@ -99,6 +99,11 @@ public class RadioButton extends javax.swing.JFrame {
 
         btnGrp_Sexo.add(rdo_Masculino);
         rdo_Masculino.setText("Masculino");
+        rdo_Masculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdo_MasculinoActionPerformed(evt);
+            }
+        });
 
         btnGrp_Sexo.add(rdo_Feminino);
         rdo_Feminino.setText("Feminino");
@@ -113,12 +118,22 @@ public class RadioButton extends javax.swing.JFrame {
         jLabel3.setText("Interesses:");
 
         chk_Tecnologia.setText("Tecnologia");
+        chk_Tecnologia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chk_TecnologiaActionPerformed(evt);
+            }
+        });
 
         chk_Astronomia.setText("Astronomia");
 
         chk_Esportes.setText("Esportes");
 
         cmb_Idioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português", "Inglês ", "Espanhol " }));
+        cmb_Idioma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_IdiomaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Idioma:");
 
@@ -349,6 +364,18 @@ public class RadioButton extends javax.swing.JFrame {
         
         cmb_Idioma.setSelectedItem(p.idioma); 
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void rdo_MasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_MasculinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdo_MasculinoActionPerformed
+
+    private void chk_TecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk_TecnologiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chk_TecnologiaActionPerformed
+
+    private void cmb_IdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_IdiomaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_IdiomaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,0 +1,2 @@
+teste3;Não sei;1980;Digital;Em andamento
+teste;teste;2000;Físico;Iniciada
