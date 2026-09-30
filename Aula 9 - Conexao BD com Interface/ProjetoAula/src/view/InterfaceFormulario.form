@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroupSexo">
+    <Component class="javax.swing.ButtonGroup" name="btnGrpSexo">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -103,7 +103,7 @@
     <Component class="javax.swing.JRadioButton" name="rbtnSexoM">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupSexo"/>
+          <ComponentRef name="btnGrpSexo"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Masculino"/>
       </Properties>
@@ -111,7 +111,7 @@
     <Component class="javax.swing.JRadioButton" name="rbtnSexoF">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupSexo"/>
+          <ComponentRef name="btnGrpSexo"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Feminino"/>
       </Properties>
