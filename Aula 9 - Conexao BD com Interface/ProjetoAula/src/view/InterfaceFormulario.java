@@ -65,6 +65,11 @@ public class InterfaceFormulario extends javax.swing.JFrame {
 
         btnGrpSexo.add(rbtnSexoM);
         rbtnSexoM.setText("Masculino");
+        rbtnSexoM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSexoMActionPerformed(evt);
+            }
+        });
 
         btnGrpSexo.add(rbtnSexoF);
         rbtnSexoF.setText("Feminino");
@@ -161,6 +166,10 @@ public class InterfaceFormulario extends javax.swing.JFrame {
         
         limparFormulario();
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void rbtnSexoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSexoMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnSexoMActionPerformed
 
     /**
      * @param args the command line arguments
