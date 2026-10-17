@@ -20,7 +20,7 @@ import java.util.HashSet;
 public class AlunoDAO {
     
     private Conexao conexao;
-    private Connection conn;
+    private Connection conn;    
     
     public AlunoDAO(Conexao conexao, Connection conn) {
         this.conexao = conexao;
@@ -53,6 +53,7 @@ public class AlunoDAO {
             Aluno a = new Aluno();
             
             rs.first();
+            a.setId(rs.getInt("id"));
             a.setNome(rs.getString("nome"));
             a.setIdade(rs.getInt("idade"));
             a.setCurso(rs.getString("curso"));
@@ -60,6 +61,23 @@ public class AlunoDAO {
         } catch (SQLException ex){
             System.out.println("Erro ao consultar pessoa"+ex.getMessage());
             return null;
+        }
+    }
+    
+    public void editar(Aluno aluno){
+        try{
+            String sql = "UPDATE alunos set nome=?, idade=?, curso=? WHERE id=?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,aluno.getNome());
+            stmt.setInt(2,aluno.getIdade());
+            stmt.setString(3,aluno.getCurso());
+            stmt.setInt(4,aluno.getId());
+            
+            stmt.execute(); 
+            
+        } catch (SQLException ex){
+            System.out.println("Erro ao editar aluno: "+ex.getMessage());
         }
     }
 }
