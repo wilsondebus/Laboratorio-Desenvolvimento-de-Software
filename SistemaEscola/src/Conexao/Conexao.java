@@ -11,8 +11,9 @@ public class Conexao {
         Connection conn;
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/escola",
-                    "root","laboratorio");
+                    "jdbc:mysql://localhost:3306/Escola",
+                    "root",
+                    "itaqui@100");
             System.out.println("Conexão efetuada!");
             return conn;
         } catch (Exception e) {

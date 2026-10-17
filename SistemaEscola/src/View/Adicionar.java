@@ -4,9 +4,11 @@
  */
 package View;
 
+import DAO.AlunoDAO;
 import beans.Aluno;
 import conexao.Conexao;
 import java.util.Set;
+import java.sql.Connection;
 
 /**
  *
@@ -123,12 +125,16 @@ public class Adicionar extends javax.swing.JFrame {
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
         // TODO add your handling code here:
         Conexao c = new Conexao(); 
+        Connection conn = c.getConexao(); 
         c.getConexao();
         
-        Aluno a = new Aluno();
+        Aluno a = new Aluno();        
         a.setNome(txtNome.getText()+"");
         a.setIdade(Integer.parseInt(txtIdade.getText())); 
         a.setCurso(cmbCurso.getSelectedItem()+""); 
+        
+        AlunoDAO aDAO = new AlunoDAO(c, conn); 
+        aDAO.inserirAluno(a);
         
         limparFormulario();
     }//GEN-LAST:event_SalvarActionPerformed
