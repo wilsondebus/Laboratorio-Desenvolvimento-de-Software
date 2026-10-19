@@ -80,6 +80,7 @@ public class EditarExcluir extends javax.swing.JFrame {
         btnAtualizar.addActionListener(this::btnAtualizarActionPerformed);
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(this::btnExcluirActionPerformed);
 
         cmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biologia", "Ciência da Computação", "Direito", "Economia", "Educação Física", "Engenharia da Computação", "Farmácia", "História", "Matemática", "Medicina", "Odontologia", "Relações Internacionais" }));
         cmbCurso.addActionListener(this::cmbCursoActionPerformed);
@@ -190,7 +191,7 @@ public class EditarExcluir extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbCursoActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        // Atualizar aluno
         Conexao c = new Conexao(); 
         Connection conn = c.getConexao(); 
         c.getConexao();
@@ -210,6 +211,19 @@ public class EditarExcluir extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // Remover aluno
+        int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "Exclusão", JOptionPane.YES_NO_OPTION);
+        Conexao c = new Conexao(); 
+        Connection conn = c.getConexao();
+        
+        if(confirmacao == JOptionPane.YES_OPTION){
+            AlunoDAO aDAO = new AlunoDAO(c, conn); 
+            aDAO.excluir(Integer.parseInt(txtId.getText()));
+            limparFormulario(); 
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

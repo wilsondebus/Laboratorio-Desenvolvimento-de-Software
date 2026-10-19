@@ -80,4 +80,16 @@ public class AlunoDAO {
             System.out.println("Erro ao editar aluno: "+ex.getMessage());
         }
     }
+    
+    public void excluir(int id){
+        try{
+            String sql = "delete from alunos WHERE id=?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute(); 
+        } catch(SQLException ex){
+            System.out.println("Erro ao excluir aluno "+ex.getMessage());
+        }
+    }
 }
