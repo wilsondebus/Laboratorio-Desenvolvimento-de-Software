@@ -92,4 +92,30 @@ public class AlunoDAO {
             System.out.println("Erro ao excluir aluno "+ex.getMessage());
         }
     }
+    
+    public List<Aluno> listarAlunos() throws SQLException{
+        List<Aluno> alunos = new ArrayList<>(); 
+        
+        String sql = "SELECT * FROM alunos ORDER BY id"; 
+        
+        try{
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery(); 
+            
+            while(rs.next()){
+                Aluno a = new Aluno();
+                
+                a.setId(rs.getInt("id"));
+                a.setNome(rs.getString("nome"));
+                a.setIdade(rs.getInt("idade"));
+                a.setCurso(rs.getString("curso"));
+                
+                alunos.add(a); 
+            }
+        } catch(SQLException ex){
+            System.out.println("Erro ao listar alunos: "+ex.getMessage());
+        }
+        
+        return alunos; 
+    }
 }
