@@ -88,8 +88,18 @@ public class EditarExcluirVeiculo extends javax.swing.JFrame {
         jLabel4.setText("Pessoa:");
 
         bntAtualizar.setText("Atualizar");
+        bntAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntAtualizarActionPerformed(evt);
+            }
+        });
 
         bntExcluir.setText("Excluir");
+        bntExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,6 +186,14 @@ public class EditarExcluirVeiculo extends javax.swing.JFrame {
             cmbPessoa.setSelectedItem(pessoaSelecionada); 
         }
     }//GEN-LAST:event_bntBuscarActionPerformed
+
+    private void bntAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAtualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bntAtualizarActionPerformed
+
+    private void bntExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bntExcluirActionPerformed
 
     /**
      * @param args the command line arguments

@@ -146,11 +146,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntAtualizarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bntExcluir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntExcluirActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -34,6 +34,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuAtualizarBanco = new javax.swing.JMenu();
         jRadioButtonMenuItem1_AdicionarAluno = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2_RemoverAtualizar = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         JMenuRelatorio = new javax.swing.JMenu();
         jRadioButtonMenuItem1_Relatorio = new javax.swing.JRadioButtonMenuItem();
 
@@ -59,6 +61,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jRadioButtonMenuItem2_RemoverAtualizar.setText("Remover / Atualizar aluno");
         jRadioButtonMenuItem2_RemoverAtualizar.addActionListener(this::jRadioButtonMenuItem2_RemoverAtualizarActionPerformed);
         jMenuAtualizarBanco.add(jRadioButtonMenuItem2_RemoverAtualizar);
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Adicionar Disciplina");
+        jRadioButtonMenuItem1.addActionListener(this::jRadioButtonMenuItem1ActionPerformed);
+        jMenuAtualizarBanco.add(jRadioButtonMenuItem1);
+
+        jRadioButtonMenuItem2.setSelected(true);
+        jRadioButtonMenuItem2.setText("Atualizar Disciplina");
+        jRadioButtonMenuItem2.addActionListener(this::jRadioButtonMenuItem2ActionPerformed);
+        jMenuAtualizarBanco.add(jRadioButtonMenuItem2);
 
         jMenuBar1.add(jMenuAtualizarBanco);
 
@@ -116,6 +128,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         tela.setVisible(true); 
     }//GEN-LAST:event_jRadioButtonMenuItem1_RelatorioActionPerformed
 
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        CadastroDisciplinas tela = new CadastroDisciplinas();
+        
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        EditarDisciplina tela = new EditarDisciplina();
+        
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -146,9 +174,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu JMenuRelatorio;
     private javax.swing.JMenu jMenuAtualizarBanco;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1_AdicionarAluno;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1_Relatorio;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1_Sair;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2_RemoverAtualizar;
     // End of variables declaration//GEN-END:variables
 }
