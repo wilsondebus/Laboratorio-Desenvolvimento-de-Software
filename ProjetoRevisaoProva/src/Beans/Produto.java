@@ -14,6 +14,15 @@ public class Produto {
     private double preco;
     private int quantidade;
     private int categoriaId;
+    private String nomeCategoria;
+
+    public String getNomeCategoria() {
+        return nomeCategoria;
+    }
+
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
 
     public int getId() {
         return id;

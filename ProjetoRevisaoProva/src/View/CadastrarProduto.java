@@ -4,6 +4,13 @@
  */
 package View;
 
+import Beans.Categorias;
+import Beans.Produto;
+import DAO.CategoriasDAO;
+import DAO.ProdutoDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wilsi
@@ -15,8 +22,24 @@ public class CadastrarProduto extends javax.swing.JFrame {
     /**
      * Creates new form CadastrarProduto
      */
+    
+    public void carregarCategorias(){
+        CategoriasDAO cDAO = new CategoriasDAO(); 
+        
+        List<Categorias> listaCategorias = cDAO.getCategorias();
+        
+        cmbCategoria.removeAllItems();
+        
+        if(listaCategorias != null){
+            for(Categorias c : listaCategorias){
+                cmbCategoria.addItem(c);
+            }
+        }
+    }
+    
     public CadastrarProduto() {
         initComponents();
+        carregarCategorias();
     }
 
     /**
@@ -37,6 +60,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         txtQuantidade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         cmbCategoria = new javax.swing.JComboBox();
+        btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +74,9 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
         jLabel5.setText("Categoria:");
 
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(this::btnCadastrarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,10 +84,6 @@ public class CadastrarProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbCategoria, 0, 169, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1))
@@ -73,7 +96,13 @@ public class CadastrarProduto extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPreco)
                             .addComponent(txtNome)
-                            .addComponent(txtQuantidade))))
+                            .addComponent(txtQuantidade)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbCategoria, 0, 163, Short.MAX_VALUE))))
                 .addGap(142, 142, 142))
         );
         layout.setVerticalGroup(
@@ -96,11 +125,31 @@ public class CadastrarProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 154, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrar)
+                .addGap(0, 88, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        //Cadastrar Produtos
+        Produto p = new Produto();
+        
+        p.setNome(txtNome.getText());
+        p.setPreco(Double.parseDouble(txtPreco.getText()));
+        p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+        
+        Categorias c = (Categorias) cmbCategoria.getSelectedItem();
+        
+        p.setCategoriaId(c.getId());
+        
+        ProdutoDAO pDAO = new ProdutoDAO();
+        pDAO.inserir(p);
+        
+        JOptionPane.showMessageDialog(null, "Produto Cadastrado!");        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,6 +177,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JComboBox cmbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
